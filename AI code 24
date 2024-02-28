@@ -1,0 +1,8 @@
+dob(john, date(1990, 5, 15)).
+dob(emma, date(1985, 9, 20)).
+dob(michael, date(1978, 3, 10)).
+dob(sarah, date(1995, 11, 25)).
+dob(alex, date(1980, 7, 8)).
+
+
+dob_of(Name, DOB) :- dob(Name, DOB).
