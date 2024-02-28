@@ -1,0 +1,44 @@
+food_category(apple, fruit).
+food_category(banana, fruit).
+food_category(spinach, vegetable).
+food_category(broccoli, vegetable).
+food_category(chicken, protein).
+food_category(fish, protein).
+food_category(brown_rice, carbohydrate).
+food_category(quinoa, carbohydrate).
+food_category(cake, dessert).
+food_category(cookie, dessert).
+
+
+diet_recommendation(diabetes, X) :-
+    (   food_category(X, fruit)
+    ;   food_category(X, vegetable)
+    ;   food_category(X, protein)
+    ;   food_category(X, carbohydrate),
+        X \= cake,
+        X \= cookie
+    ).
+
+
+diet_recommendation(hypertension, X) :-
+    (   food_category(X, fruit)
+    ;   food_category(X, vegetable)
+    ;   food_category(X, protein),
+        X \= fish
+    ;   food_category(X, carbohydrate),
+        X \= brown_rice,
+        X \= quinoa
+    ).
+
+% For Obesity
+diet_recommendation(obesity, X) :-
+    (   food_category(X, fruit)
+    ;   food_category(X, vegetable)
+    ;   food_category(X, protein),
+        X \= chicken
+    ;   food_category(X, carbohydrate),
+        X \= brown_rice,
+        X \= quinoa,
+        X \= cake,
+        X \= cookie
+    ).
