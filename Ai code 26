@@ -1,0 +1,16 @@
+distance_from_sun(mercury, 0.39, 0.0553).
+mass(mercury, 0.0553).
+orbital_period(saturn, 29.5).
+day_length(saturn, 0.45). % In Earth days
+day_length_hours(saturn, 10.8). % In Earth hours
+
+distance_between(X, Y, Distance) :-
+    distance_from_sun(X, X_Distance),
+    distance_from_sun(Y, Y_Distance),
+    Distance is abs(X_Distance - Y_Distance).
+
+
+closer_to_sun(X) :-
+    distance_from_sun(X, Distance),
+    distance_from_sun(earth, Earth_Distance),
+    Distance < Earth_Distance.
