@@ -1,0 +1,27 @@
+symptom(fever).
+symptom(cough).
+symptom(headache).
+symptom(sore_throat).
+symptom(runny_nose).
+symptom(muscle_aches).
+
+
+condition(cold, [fever, cough, runny_nose, sore_throat, headache, muscle_aches]).
+condition(flu, [fever, cough, headache, muscle_aches]).
+
+diagnose(Condition, Symptoms) :-
+    condition(Condition, ConditionSymptoms),
+    subset(ConditionSymptoms, Symptoms).
+
+
+subset([], _).
+subset([H|T], List) :-
+    member(H, List),
+    subset(T, List).
+
+
+diagnose_patient :-
+    write('Welcome to the diagnostic system. Please input your symptoms separated by commas: '),
+    read(Symptoms),
+    diagnose(Condition, Symptoms),
+    format('You may have ~w. Please consult a doctor for confirmation.', [Condition]).
