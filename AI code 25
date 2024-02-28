@@ -1,0 +1,31 @@
+student(john).
+student(mary).
+student(peter).
+
+teacher(mr_smith).
+teacher(mrs_jones).
+teacher(mr_brown).
+
+subject(math).
+subject(science).
+subject(english).
+
+code(math, m101).
+code(science, s202).
+code(english, e303).
+
+
+generate_question(Question) :-
+    student(Student),
+    format(atom(Question), 'What is the subject code for ~w?', [Student]).
+
+generate_question(Question) :-
+    teacher(Teacher),
+    format(atom(Question), 'Which subject does ~w teach?', [Teacher]).
+
+generate_question(Question) :-
+    subject(Subject),
+    format(atom(Question), 'Who teaches ~w?', [Subject]).
+
+generate_questions(Questions) :-
+    findall(Question, generate_question(Question), Questions).
