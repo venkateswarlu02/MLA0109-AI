@@ -1,0 +1,3 @@
+can_fly(sparrow).
+can_fly(eagle).
+cannot_fly(penguin).
